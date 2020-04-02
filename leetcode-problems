@@ -1,0 +1,33 @@
+def intToRoman(self, num):
+        """
+        :type num: int
+        :rtype: str
+        """
+        # Restated problem: Write a function to convert any integer in the range 1 to 3999 to           
+	# its roman numeral equivalent. 
+        # Additional questions: What happens to digits that are zero?
+        # Assumptions: Input will be between 1 and 3999
+        # My first thought is that I want a list of all the symbols and their values - maybe a         
+	# dictionary for faster lookup?
+        # One solution could be to just get each individual digit, check its value, and add the         
+	# corresponding symbol to a result string, but this sounds like it would take a lot of         
+	# loops and if statements, which isn't too elegant
+        # Instead, I can check if and how many times the given number will use each symbol by           
+	# dividing it by the symbol's corresponding value, then I can add the symbol as many 
+        # times as it appears to a result string.
+        # Then, to get the next part of the number, I can subtract the part I already looked 
+        # at, which will be the symbol's value multiplied by the digit
+        roman_numeral = ""
+        # Not gonna use a dictionary because I want to always go in the same order
+        symbols = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+        values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+        
+        for i in range(len(values)):
+            y = num // values[i]
+            roman_numeral += y * symbols[i]
+            num -= values[i] * y
+        
+        return roman_numeral
+        
+        # I think this is a pretty strong solution because it's O(n) time complexity, which is         
+	# better than my naive solution would've been
