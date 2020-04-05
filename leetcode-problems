@@ -1,4 +1,4 @@
-def intToRoman(self, num):
+def intToRoman(num):
         """
         :type num: int
         :rtype: str
@@ -35,3 +35,37 @@ def intToRoman(self, num):
         
         # I think this is a pretty strong solution because it's O(n) time complexity, which is         
 	# better than my naive solution would've been
+
+def isPalindrome(num):
+        """
+        :type num: int
+        :rtype: bool
+        """
+        # Restated problem: Write a function to determine if an integer reads the same backwards
+        # as it does forwards. 
+        # Additional questions: Can negative numbers be palindromes considering they have a negative
+        # sign in front? Is a single digit a palindrome?
+        # Assumptions: Output is a bool, negative numbers can't be palindromes, single digits do count
+        # as palindromes.
+        # So the easiest way to do this would be to turn num into a string so we can look at each 
+        # digit individually, then add each digit to a "backwards number" string and compare it
+        # to our first string. 
+        # An improvement to this would be to check if the first digit is the same as the last digit 
+        # and work our way inwards, ending when we've reached the middle. This would save space since we
+        # wouldn't have to create another string for comparison.
+        # I also know that any number that's less than zero, or ends in 0 and isn't 0, won't be a 
+        # palindrome.
+
+        if num < 0 or (num % 10 == 0 and num != 0):
+            return False
+        
+        num = str(num)
+        i = 0
+        while i < len(num) / 2:
+            if num[i] != num[-i-1]:
+                return False
+            i += 1
+        return True
+
+        # I think this is a pretty strong solution as well, since we aren't using any space and the 
+        # time complexity is O(n)
