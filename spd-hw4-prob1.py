@@ -1,15 +1,15 @@
-my_list = [24, 15, 17, 21, 15]
+my_list = [23, 15, 17, 21, 15]
 
 def listDuplicates(arr):
-	my_dict = { }
+	my_dict = {}
 
 	for i in arr:
-		if arr[i] in my_dict:
-			return true
+		if i in my_dict.keys():
+			return True
 		else:
-			my_dict[arr[i]] += 1
+			my_dict[i] = 1
 
-	return false
+	return False
 
-# Expected: true
+# Expected: True
 print(listDuplicates(my_list))

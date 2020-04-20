@@ -4,8 +4,9 @@ def find_duplicate(arr):
 	arr.sort()
 	prev = 0
 	for i in arr:
-		if prev == arr[i]
-			return arr[i]
-		prev = last[i]
+		if prev == i:
+			return i
+		prev = i
 
+#Expected: 15
 print(find_duplicate(my_list))
